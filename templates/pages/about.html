@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    About Me
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="about">
+        <img src="{% static 'img/FullStack banner.png' %}" alt="">
+
+        <h4>About me:</h4>
+        <h1>Samuel Dominguez</h1>
+        <h1>Christian Albrand</h1>
+    </div>
+{% endblock %}
