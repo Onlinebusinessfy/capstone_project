@@ -12,6 +12,21 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
+          <li>
+            <a class="nav-link" href="{% url 'post_list' %}">Forum</a>
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="nav-link" type="submit">Log Out</button>
+              </form>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Log In</a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </div>
