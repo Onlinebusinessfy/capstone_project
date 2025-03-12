@@ -5,29 +5,33 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
-          <li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'post_list' %}">Forum</a>
           </li>
+        </ul>
+        
+        <div class="d-flex" role="search">
           {% if user.is_authenticated %}
-            <li class="nav-item">
+              <span class="btn btn-outline-light">{{user.username}}</span>
               <form method="POST" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <button class="nav-link" type="submit">Log Out</button>
+                <button class="btn btn-outline-light" type="submit">Log Out</button>
               </form>
-            </li>
           {% else %}
+          <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Log In</a>
+              <a class="btn btn-outline-light" href="{% url 'login' %}">Log In</a>
             </li>
-          {% endif %}
-        </ul>
+          </ul>
+          {% endif %}  
+        </div>
       </div>
     </div>
   </nav>

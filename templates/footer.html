@@ -1,0 +1,16 @@
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+<footer>
+    <div class="footer">
+        <img src="{% static 'img/Logo Blog.png' %}" alt="">
+        <nav class="navbar-nav footer-links footer-navbar">
+            <a class="nav-link active footer-link" aria-current="page" href="{% url 'home' %}">Home</a>
+            <a class="nav-link footer-link" href="{% url 'about' %}">About</a>
+            <a class="nav-link footer-link" href="{% url 'post_list' %}">Forum</a>
+        </nav>
+    </div>
+</footer>

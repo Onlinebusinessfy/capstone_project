@@ -16,3 +16,36 @@
 .post-list .header a{
     margin-right: 2rem;
 }
+
+.post-list .card{
+    width: 18rem;
+    margin-top: 15px;
+}
+
+@media screen and (max-width:767px) {
+    /* Style for smartphones */
+    .post-list .card{
+        width: calc(100%-24px);
+    }
+
+    .post-list .card h5{
+        text-align: center;
+        font-size: 26px;
+    }
+
+    .post-list .cart h6{
+        text-align: center;
+        color: #5e5959;
+    }
+
+    .post-list .card a{
+        margin-top: 0.7rem;
+        display: block;
+        text-align: right;
+    }
+
+    .post-list .header h1{
+        text-align: left;
+        padding-top: 0.5rem;
+    }
+}

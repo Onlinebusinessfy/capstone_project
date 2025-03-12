@@ -1,0 +1,38 @@
+footer{
+    width: 100%;
+}
+
+.footer img{
+    width: 10%;
+    height: auto;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center !important;
+    justify-content: space-evenly !important;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.footer-link{
+    color: black !important;
+    gap: 20px !important;
+}
+
+.footer-navbar{
+    gap: 20px;
+}
+/* .navbar-brand, .nav-link {
+    color: black !important;
+} */
+
+.footer .footer-links a:hover{
+    color: var(--primary-color) !important;
+    font-size: 1.6rem; 
+}

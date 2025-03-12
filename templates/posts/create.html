@@ -13,7 +13,7 @@
 <div class="row create-post">
     <h3>Create New Post</h3>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{form|crispy}}

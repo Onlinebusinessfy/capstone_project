@@ -17,7 +17,7 @@ class Post(models.Model):
         on_delete=models.CASCADE
     )
     body=models.TextField()
-    image=models.ImageField(upload_to="upload/")
+    image=models.ImageField(upload_to="upload/", blank=True, null=True)
     created_on=models.DateTimeField(auto_now_add=True)
     status=models.ForeignKey(
         Status,
