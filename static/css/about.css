@@ -6,6 +6,8 @@
     text-align: center;
 }
 
+
+
 .about h4{
     color: #6a6b6c;
     margin-bottom: 0;
@@ -14,4 +16,40 @@
 
 .about h1{
     color: darkcyan;
+}
+
+/* dev images */
+.dev-images img{
+    border-radius: 45%;
+}
+
+.dev-images-container{
+    display: flex;
+    justify-content: center;
+}
+
+.samuel{
+    width: 65%;
+}
+
+.christian{
+    width: 50%;
+}
+
+/* blog information */
+
+
+
+@media screen and (max-width: 767px){
+    .dev-images{
+        width: 70%;
+    }
+    .christian{
+        width: 70%;
+    }
+
+    .blog-container{
+        text-align: justify;
+        text-justify: inter-word;
+    }
 }
