@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+.contact-section .field button{
+    margin-top: 10px;
+}
+
 .contact-section .field label{
     display: block;
     color: var(--neutral-color);
@@ -25,4 +29,9 @@
 .contact-section .field textarea{
     width: 100%;
     padding: 5px;
+}
+
+.contact-section h1{
+    text-align: center;
+    color: var(--primary-color);
 }
