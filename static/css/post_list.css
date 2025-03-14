@@ -11,10 +11,16 @@
 .post-list .header h1{
     flex: 1;
     text-align: center;
+    color: darkcyan;
+    margin-left: 160px;
 }
 
 .post-list .header a{
     margin-right: 2rem;
+}
+
+.post-list img{
+    width: 100%;
 }
 
 .post-list .card{
@@ -22,10 +28,9 @@
     margin-top: 15px;
 }
 
-@media screen and (max-width:767px) {
-    /* Style for smartphones */
+@media screen and (max-width: 767px){
     .post-list .card{
-        width: calc(100%-24px);
+        width: calc(100% - 24px);
     }
 
     .post-list .card h5{
@@ -33,9 +38,8 @@
         font-size: 26px;
     }
 
-    .post-list .cart h6{
+    .post-list .card h6{
         text-align: center;
-        color: #5e5959;
     }
 
     .post-list .card a{
@@ -47,5 +51,14 @@
     .post-list .header h1{
         text-align: left;
         padding-top: 0.5rem;
+        margin-left: 0;
+    }
+
+    .post-list .container{
+        margin-bottom: 0.7rem;
+    }
+
+    .post-list .header a{
+        margin-right: 0;
     }
 }
