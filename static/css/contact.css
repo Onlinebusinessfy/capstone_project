@@ -1,0 +1,28 @@
+.contact-section{
+    padding-top: 1rem;
+}
+
+.contact-section form{
+    padding-top: 1.5rem;
+    background-color: white;
+    border: 1px solid #3f3f3f;
+    border-radius: 4px;
+    padding: 20px 30px 10px 20px;
+    margin-top: 2rem;
+}
+
+.contact-section .field{
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.contact-section .field label{
+    display: block;
+    color: var(--neutral-color);
+}
+
+.contact-section .field input,
+.contact-section .field textarea{
+    width: 100%;
+    padding: 5px;
+}
