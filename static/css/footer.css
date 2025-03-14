@@ -36,3 +36,19 @@ footer{
     color: var(--primary-color) !important;
     font-size: 1.6rem; 
 }
+
+@media screen and (max-width:767px) {
+    /* Style for smartphones */
+    .footer img{
+        width: 30%;
+    }
+
+    .footer{
+        font-size: 1.0rem;
+    }
+
+    .footer .footer-links a:hover{
+        color: var(--primary-color) !important;
+        font-size: 1.3rem;
+    }
+}
