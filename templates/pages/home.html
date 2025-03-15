@@ -10,6 +10,54 @@
 {% endblock %}
 
 {% block content %}
+    <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4000">
+                <div class="overlay-image" style="background-image: url({% static 'img/Quantum Chip.jpg' %});"></div>
+                <div class="container">
+                    <h1>The Future of Computing: Quantum Chips</h1>
+                    <p>Quantum chips are revolutionizing computing by performing complex calculations at unprecedented speeds.
+                    </p>
+                    <a href="https://quantum.microsoft.com/" class="btn btn-lg btn-primary" target="_blank">
+                        Get more information
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <div class="overlay-image" style="background-image: url({% static 'img/API.jpeg' %});"></div>
+                <div class="container">
+                    <h1>AI-Powered Web Applications</h1>
+                    <p>AI enhances user experience through chatbots, recommendation systems, and intelligent automation.</p>
+                    <a href="https://www.synthesia.io/post/ai-tools" class="btn btn-lg btn-primary" target="_blank">
+                        Get more information
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+                <div class="overlay-image" style="background-image: url({% static 'img/Frameworks.jpg' %});"></div>
+                <div class="container">
+                    <h1>React, Vue, and Angular: The Frontend Giants</h1>
+                    <p>Modern JavaScript frameworks provide dynamic, fast, and interactive web experiences.</p>
+                    <a href="https://www.browserstack.com/guide/angular-vs-react-vs-vue" class="btn btn-lg btn-primary" target="_blank">
+                        Get more information
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a href="#myCarousel" class="carousel-control-prev" role="button" data-bs-slide="prev">
+            <span class="sr-only"></span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a href="#myCarousel" class="carousel-control-next" role="button" data-bs-slide="next">
+            <span class="sr-only"></span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
     <div class="home">
         <h1>FULL STACK DEVELOPER</h1>
         <div  class="section">

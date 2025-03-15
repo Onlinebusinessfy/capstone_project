@@ -6,3 +6,8 @@
 .navbar-brand, .nav-link{
     color: white !important;
 }
+
+.container-fluid{
+    padding-right: calc(var(--bs-gutter-x)* .5) !important;
+    padding-left: calc(var(--bs-gutter-x)* .5) !important;
+}
