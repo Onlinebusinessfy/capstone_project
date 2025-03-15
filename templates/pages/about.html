@@ -2,33 +2,94 @@
 {% load static %}
 
 {% block title %}
-    About Me
+About Me
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div class="about">
-        <h1>Developers:</h1>
-        <div class="dev-images-container">
-            <div class="dev-images">
-                <img src="{% static 'img/my-photo.png' %}" class="christian" alt="">
-                <h1>Christian Albrand</h1>
-            </div>
-            <div class="dev-images">
-                <img src="{% static 'img/samuel.jpeg' %}" class="samuel" alt="">
-                <h1>Samuel Dominguez</h1>
-            </div>
+<div class="about">
+    <h1>Developers:</h1>
+    <div class="dev-images-container">
+        <div class="dev-images">
+            <img src="{% static 'img/my-photo.png' %}" class="christian" alt="">
+            <h1>Christian Albrand</h1>
+        </div>
+        <div class="dev-images">
+            <img src="{% static 'img/samuel.jpeg' %}" class="samuel" alt="">
+            <h1>Samuel Dominguez</h1>
         </div>
     </div>
-    <hr>
-    <div class="blog-container">
-        <h1>About Our Blog</h1>
-        <p>
-            Welcome to our Fullstack Development blog, where we research and share valuable information about modern web development. 
-            Our goal is to spread knowledge about Fullstack technologies, industry trends, and best practices to help developers stay informed and grow in their careers.
-        </p>
+</div>
+<hr>
+<div class="blog-container">
+    <h1>About Our Blog</h1>
+    <div class="blog-group">
+        <div>
+            <p>
+                Welcome to our Fullstack Development Blog, your go-to resource for everything Fullstack, Backend, and
+                Frontend
+                Development. We are dedicated to researching, analyzing, and sharing valuable insights into modern web
+                development.
+
+                Our mission is to empower developers by providing well-structured content on the latest technologies,
+                best
+                coding practices, and industry trends. Whether you're working on scalable backend systems, crafting
+                seamless
+                frontend experiences, or integrating both into robust Fullstack applications, we’ve got you covered.
+
+                Through in-depth tutorials, expert opinions, and real-world case studies, we aim to simplify complex
+                topics
+                and help you grow in your career. Join us in exploring the future of web development!
+            </p>
+        </div>
+        <img src="{% static 'img/devs-image-coding.webp' %}" alt="">
     </div>
+
+    <h1>Our Mission</h1>
+    <div class="blog-group">
+        <img src="{% static 'img/our-mission-img.png' %}" alt="">
+        <div>
+            <p>
+                Our mission is to empower developers by providing high-quality content on Fullstack, Backend, and
+                Frontend
+                development. We strive to bridge the gap between theory and practice, offering insightful tutorials,
+                industry trends, and best practices to help developers stay ahead in the fast-paced world of web
+                development.
+
+                We believe in continuous learning and innovation, making complex concepts more accessible and helping
+                developers build efficient, scalable, and secure applications. Whether you're a beginner or an
+                experienced
+                engineer, our goal is to support your journey toward mastering modern web technologies.
+            </p>
+        </div>
+    </div>
+    <h1>Why Choose Us?</h1>
+    <div class="choose-us-container">
+        <div>
+            <h2>Technical and Practical Approach</h2>
+            <p>
+                We don’t just explain concepts—we apply them to real-world examples and functional projects so you can
+                take your learning to the next level.
+            </p>
+        </div>
+        <div>
+            <h2>Optimization and Efficiency</h2>
+            <p>
+                We are passionate about efficient development. Every article is designed to help you write clean,
+                scalable, and
+                well-optimized code.
+            </p>
+        </div>
+        <div>
+            <h2> Experience-Based Learning</h2>
+            <p>
+                All our content is backed by hands-on experience in backend development and UX design, combining
+                performance with usability.
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}

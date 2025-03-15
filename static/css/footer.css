@@ -16,10 +16,6 @@ footer{
     font-size: 1.4rem;
 }
 
-.navbar-nav {
-    flex-direction: row;
-}
-
 .footer-link{
     color: black !important;
     gap: 20px !important;
@@ -27,6 +23,7 @@ footer{
 
 .footer-navbar{
     gap: 20px;
+    flex-direction: row;
 }
 /* .navbar-brand, .nav-link {
     color: black !important;
