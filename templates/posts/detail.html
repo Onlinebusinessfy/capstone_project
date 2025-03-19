@@ -12,4 +12,8 @@
     <h6>Author: {{post.author}}</h6>
     <strong>Created on: {{post.created_on}}</strong>
     <p>{{post.body}}</p>
+
+    {% if user.username == post.author.username %}
+    <a href="{% url 'post_update' post.id %}" class="btn btn-outline-dark"></a>
+    {% endif %}
 {% endblock %}

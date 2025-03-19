@@ -3,12 +3,14 @@ from django.views.generic import(
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
 )
 from .models import Post, Status
 from django.urls import reverse_lazy
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required #function view
 from django.contrib.auth.mixins import LoginRequiredMixin #class views
+from django.core.exceptions import PermissionDenied
 
 # Create your views here.
 class PostListView(ListView):
@@ -35,3 +37,17 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         # the record is saved here
         form.instance.author=self.request.user #set the logged user
         return super().form_valid(form) #continue with the save process
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    template_name="posts/update.html"
+    model=Post
+    form_class=PostForm
+    success_url=reverse_lazy("post_list")
+
+    def get_object(self, queryset = None):
+        post = super().get_object(queryset)
+
+        if post.author != self.request.user:
+            raise PermissionDenied("You don't have permission to modify this record!")
+        else:
+            return post
