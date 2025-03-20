@@ -9,6 +9,9 @@
     border-radius: 4px;
     padding: 20px 30px 10px 20px;
     margin-top: 2rem;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-section .field{
@@ -34,4 +37,11 @@
 .contact-section h1{
     text-align: center;
     color: var(--primary-color);
+}
+
+@media screen and (max-width:767px) {
+    .contact-section form{
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
 }
