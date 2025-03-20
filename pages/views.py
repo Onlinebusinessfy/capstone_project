@@ -39,3 +39,6 @@ def contact_view(request):
         form=ContactForm()
 
     return render(request, "pages/contact.html", {'form': form})
+
+def recruitment_view(request):
+    return render(request, 'pages/recruit.html')

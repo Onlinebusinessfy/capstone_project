@@ -7,15 +7,8 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-.about h4 {
-    color: #6a6b6c;
-    margin-bottom: 0;
-    margin-top: 12px;
-}
-
 .about h1 {
-    color: darkcyan;
+    color: var(--primary-color);
     font-weight: bold;
 }
 
@@ -55,7 +48,7 @@
 
 .blog-container h1,
 .blog-container h2 {
-    color: darkcyan;
+    color: var(--primary-color);
     text-align: center;
 }
 
