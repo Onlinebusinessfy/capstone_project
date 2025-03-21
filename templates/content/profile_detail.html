@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Available Profiles
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Profile {{profile.id}}</h1>
+    <h2>{{profile.name}}</h2>
+    <h5>{{profile.phone_number}}</h5>
+    <h6>{{profile.city}}</h6>
+    <h6>{{profile.state}}</h6>
+    <h6>{{profile.user}}</h6>
+    <p>{{profile.description}}</p>
+    <small>{{profile.created_at}}</small>
+    <br>
+    <a href="{% url 'profile_update' profile.id %}" class="btn btn-primary">Edit Profile</a>
+{% endblock %}
