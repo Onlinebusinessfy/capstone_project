@@ -1,14 +1,19 @@
-.home{
-    margin: 20px 30%;
-}
-
-.home h1, h2{
+.home h1,
+h2 {
     text-align: center;
     color: var(--primary-color);
     margin-top: 40px;
+    margin-bottom: 50px;
 }
 
-.home p{
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home p {
     margin-bottom: 10px;
     text-align: justify;
     font-family: var(--lobster-font);
@@ -18,27 +23,31 @@
 .section {
     display: flex;
     align-items: center;
+    width: 80%;
+    text-align: center;
 }
 
 .section img {
-    width: 50%;
+    width: 40%;
     border-radius: 10px;
+    box-shadow: 10px 9px 15px rgba(0, 0, 0, 0.2);
 }
 
 .section p {
     width: 80%;
     font-size: 1.1em;
+    margin: 0 auto;
 }
 
 /* Carrousel slider */
-.carousel-item{
+.carousel-item {
     height: 32rem;
     background-color: black;
     color: white;
     position: relative;
 }
 
-.container{
+.container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -46,7 +55,7 @@
     padding-bottom: 50px;
 }
 
-.overlay-image{
+.overlay-image {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -57,7 +66,7 @@
     opacity: 0.5;
 }
 
-main.container-fluid{
+main.container-fluid {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
     width: 100%;
@@ -65,58 +74,26 @@ main.container-fluid{
     padding-left: 0 !important;
     margin-right: auto;
     margin-left: auto;
-} 
+}
 
 /* Full Stack section */
 .full-stack-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: justify;
-    gap: 20px;
-    max-width: 900px;
-    margin: 30px auto;
+    margin-right: 20px;
 }
 
-.full-stack-1 {
-    flex: 1;
-}
-
-.full-stack-img {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
 
 /* Front End section */
-.front-end-section{
-    justify-content: center;
-    margin-left: 55px;
-    margin-top: 20px;
-    gap: 20px;
-}
 
-.front-end-section img{
-    margin-bottom: 30px;
-}
-
-.front-end-section-1{
-    width: 100%;
-    margin: 0;
-}
 
 /* Back End section */
-.back-end-section{
-    justify-content: center;
-    text-align: justify;
-    align-items: center;
-    gap: 20px;
+.back-end{
+    margin-bottom: 50px;
 }
-
 @media screen and (max-width:767px) {
-    /* Style for smartphones */
-    .home{
-        margin: 50px;
+
+    /* Estilo para smartphones */
+    .home {
+        margin: 10px;
         justify-content: center;
     }
 
@@ -126,49 +103,35 @@ main.container-fluid{
     }
 
     .home .section img {
-        width: 80%;
+        width: 100%;
+    }
+
+    .front-end h4 {
+        margin-top: 1.7rem;
     }
 
     .section p {
         width: 90%;
     }
 
-    .carousel-item{
-        height: 32rem;
+    .carousel-item {
+        height: 25rem;
         background-color: black;
         color: white;
         text-align: center;
     }
 
-    .container h1{
+    .container h1 {
         font-size: 1.2rem;
     }
 
-    .container p{
-        font-size: 0.8rem;
-    }
-
-    .container a{
+    .container a {
         padding: 0.1rem;
     }
 
-    /* Full Stack section */
     .full-stack-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 0;
-        margin: 30px auto;
-        max-width: none;
-    }
-
-    .full-stack-1 img {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
 }

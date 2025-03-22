@@ -1,6 +1,7 @@
 
 .post-list{
-
+    font-size: larger;
+    font-weight: bolder;
 }
 
 .post-list .header{
@@ -19,14 +20,36 @@
     margin-right: 2rem;
 }
 
-.post-list img{
-    width: 100%;
-}
 
 .post-list .card{
-    width: 18rem;
+    width: 100%;
     margin-top: 15px;
 }
+
+.post-card {
+    background-size: cover;  /* Asegura que la imagen cubra todo el contenedor */
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat;  /* No repite la imagen */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;  /* El texto será blanco sobre el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card-body {
+    background-color: rgba(0, 0, 0, 0.664);  
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text-body-secondary{
+    color: white !important;
+}
+
 
 @media screen and (max-width: 767px){
     .post-list .card{
