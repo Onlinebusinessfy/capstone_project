@@ -14,21 +14,30 @@ Posts
     <div class="card mb-3">
         <div class="header">
             <h1>Posts</h1>
+            <form class="d-flex" role="search" method="get">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
             <a class="btn btn-outline-primary" href="{% url 'post_create' %}">Create New Post</a>
         </div>
         {% for item in post_list %}
-            <hr>
-            <div class="post-card"
-                style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}');">
-                <div class="card-body">
-                    <h5 class="card-title">{{item.title}}</h5>
-                    <p class="card-text">{{item.subtitle}}</p>
-                    <p class="card-text"><small class="text-body-secondary">Author: {{item.author}}</small></p>
-                    <p class="card-text">{{post.body|truncatechars:20}}</p>
-                    <small>{{item.created_on}}</small><br />
-                    <a href="{% url 'post_detail' item.id %}" class="card-link">Continue reading...</a>
-                </div>
+        <hr>
+        <div class="post-card"
+            style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}');">
+            <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.subtitle}}</p>
+                <p class="card-text"><small class="text-body-secondary">Author: {{item.author}}</small></p>
+                <p class="card-text">{{post.body|truncatechars:20}}</p>
+                <small>{{item.created_on}}</small><br />
+                <a href="{% url 'post_detail' item.id %}" class="card-link">Continue reading...</a>
             </div>
+        </div>
+        {% if item.number_of_likes > 1 %}
+        <strong class="text-secondary">{{ item.number_of_likes }} Likes{{ item.number_of_likes|pluralize }}</strong>
+        {% else %}
+        <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
+        {% endif %}
         {% endfor %}
     </div>
 </div>

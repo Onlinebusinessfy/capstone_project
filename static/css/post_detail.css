@@ -1,0 +1,8 @@
+.post-body{
+    background-color: rgba(189, 189, 189, 0.767);
+    border-radius: 10px;
+}
+
+.post-body p{
+    padding: 10px;
+}

@@ -16,6 +16,10 @@
     margin-left: 160px;
 }
 
+form button{
+    margin-right: 10px;
+}
+
 .post-list .header a{
     margin-right: 2rem;
 }
@@ -24,6 +28,10 @@
 .post-list .card{
     width: 100%;
     margin-top: 15px;
+}
+
+.text-secondary{
+    margin-left: 20px;
 }
 
 .post-card {
