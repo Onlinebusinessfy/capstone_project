@@ -2,103 +2,141 @@
 {% load static %}
 
 {% block title %}
-    Home
+Home
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="4000">
-                <div class="overlay-image" style="background-image: url({% static 'img/Quantum Chip.jpg' %});"></div>
-                <div class="container">
-                    <h1>The Future of Computing: Quantum Chips</h1>
-                    <p>Quantum chips are revolutionizing computing by performing complex calculations at unprecedented speeds.
-                    </p>
-                    <a href="https://quantum.microsoft.com/" class="btn btn-lg btn-primary" target="_blank">
-                        Get more information
-                    </a>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="4000">
-                <div class="overlay-image" style="background-image: url({% static 'img/API.jpeg' %});"></div>
-                <div class="container">
-                    <h1>AI-Powered Web Applications</h1>
-                    <p>AI enhances user experience through chatbots, recommendation systems, and intelligent automation.</p>
-                    <a href="https://www.synthesia.io/post/ai-tools" class="btn btn-lg btn-primary" target="_blank">
-                        Get more information
-                    </a>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="4000">
-                <div class="overlay-image" style="background-image: url({% static 'img/Frameworks.jpg' %});"></div>
-                <div class="container">
-                    <h1>React, Vue, and Angular: The Frontend Giants</h1>
-                    <p>Modern JavaScript frameworks provide dynamic, fast, and interactive web experiences.</p>
-                    <a href="https://www.browserstack.com/guide/angular-vs-react-vs-vue" class="btn btn-lg btn-primary" target="_blank">
-                        Get more information
-                    </a>
-                </div>
+<div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="4000">
+            <div class="overlay-image" style="background-image: url({% static 'img/Quantum Chip.jpg' %});"></div>
+            <div class="container">
+                <h1>The Future of Computing: Quantum Chips</h1>
+                <p>Quantum chips are revolutionizing computing by performing complex calculations at unprecedented
+                    speeds.
+                </p>
+                <a href="https://quantum.microsoft.com/" class="btn btn-lg btn-primary" target="_blank">
+                    Get more information
+                </a>
             </div>
         </div>
-        <a href="#myCarousel" class="carousel-control-prev" role="button" data-bs-slide="prev">
-            <span class="sr-only"></span>
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </a>
-        <a href="#myCarousel" class="carousel-control-next" role="button" data-bs-slide="next">
-            <span class="sr-only"></span>
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </a>
+        <div class="carousel-item" data-bs-interval="4000">
+            <div class="overlay-image" style="background-image: url({% static 'img/API.jpeg' %});"></div>
+            <div class="container">
+                <h1>AI-Powered Web Applications</h1>
+                <p>AI enhances user experience through chatbots, recommendation systems, and intelligent automation.</p>
+                <a href="https://www.synthesia.io/post/ai-tools" class="btn btn-lg btn-primary" target="_blank">
+                    Get more information
+                </a>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+            <div class="overlay-image" style="background-image: url({% static 'img/Frameworks.jpg' %});"></div>
+            <div class="container">
+                <h1>React, Vue, and Angular: The Frontend Giants</h1>
+                <p>Modern JavaScript frameworks provide dynamic, fast, and interactive web experiences.</p>
+                <a href="https://www.browserstack.com/guide/angular-vs-react-vs-vue" class="btn btn-lg btn-primary"
+                    target="_blank">
+                    Get more information
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="home">
-        <h1>FULL STACK DEVELOPER</h1>
-        <div  class="section">
-            <div class="full-stack-section">
-                <div class="full-stack-1">
-                    <h4>What is full stack development?</h4>
-                    <p>Full stack development encompasses the complete process of application software development, including both the front-end and back-end development. The front end consists of the user interface (or UI), and the back end handles the business logic and application workflows that run behind the scenes.
-                        Full stack developers possess the skills and knowledge to work across the entire technology stack, enabling seamless user experiences and developing robust backends.</p>
-                </div>
-                    <img src="{% static 'img/Full Stack.png' %}" alt="">
-            </div>
-        </div>
-        <p>A full-stack developer is a software developer who is proficient in both frontend and backend development. This means they can work on the entire technology stack of a web application, from designing user interfaces to managing databases and server-side logic.</p>
-        <h2>FRONT-END DEVELOPER</h2>
-        <div class="section front-end-section">
-                <img src="{% static 'img/Frontend.jpg' %}" alt="">
-                <div class="front-end-section-1">
-                    <h4>What is a Front-end developer?</h4>
-                    <p>A frontend developer focuses on the client-side of web applications, meaning everything that users interact with directly in their browsers. Their main goal is to create a visually appealing, responsive, and user-friendly experience.</p>
-                </div>
-            </div>
-            <p>The front end is the face of a web application, the part that users interact with directly. Full stack web developers possess a deep understanding of front-end technologies, including HTML, CSS, and JavaScript. They leverage these foundational languages to structure, style, and enhance the visual appeal of web pages.
-    
-                Full stack developers also stay current with the ever-evolving front-end landscape, constantly exploring and mastering the latest technologies and frameworks. Whether it's harnessing the power of React to build dynamic and interactive user interfaces, leveraging Angular's robust features for complex web applications, or embracing the simplicity and flexibility of Vue.js, full stack web developers are well-versed in a wide range of tools.
-                
-                Full stack developers understand the importance of creating responsive designs that seamlessly adapt to various devices and screen sizes. They employ CSS frameworks like Bootstrap or Foundation to streamline the development process and ensure a consistent and visually appealing user interface across different platforms.
-                
-                With their expertise in front-end optimization techniques, full stack web developers strive to deliver fast-loading and high-performing web experiences.
-                
-                But front-end development isn't just about making things look pretty. Full stack developers also focus on usability and accessibility, ensuring the UI is intuitive, easy to navigate, and inclusive to all users, including those with disabilities.
-                
-                Moreover, most full stack developers are proficient in integrating the front end with back-end APIs and services. They utilize modern JavaScript features that are built into modern browsers to seamlessly communicate with server-side components, retrieve and manipulate data, and update the user interface in real time. Additionally, they leverage popular JavaScript libraries and frameworks like React, Angular, or Vue.js to build dynamic, interactive user interfaces. This enables them to create data-driven web applications that provide a smooth and interactive user experience.</p>
-        <h2>BACK-END DEVELOPER</h2>
-        <div class="section back-end-section">
-            <img src="{% static 'img/Backend.png' %}" alt="">
-            <p>Full stack developers are proficient in server-side languages such as Python, Ruby, PHP, and JavaScript, allowing them to build robust and scalable back-end systems. Back-end developers play a crucial role in designing and implementing the application's core functionality, handling data management, and ensuring smooth integration with databases like MySQL, MongoDB, or PostgreSQL.
-
-                Additionally, they possess the skills to write clean, efficient, and maintainable code that powers the application's back-end logic. Whether it's Python's simplicity and versatility, Ruby's elegance and readability, PHP's widespread adoption, or Node.js's event-driven architecture, full stack developers are well-versed in multiple programming languages and can choose the best fit for the project at hand.
+    <a href="#myCarousel" class="carousel-control-prev" role="button" data-bs-slide="prev">
+        <span class="sr-only"></span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a href="#myCarousel" class="carousel-control-next" role="button" data-bs-slide="next">
+        <span class="sr-only"></span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+<div class="home">
+    <h1>FULL STACK DEVELOPER</h1>
+    <div class="section">
+        <div class="full-stack-section">
+            <h4>What is full stack development?</h4>
+            <hr>
+            <p>Full stack development encompasses the complete process of application software development,
+                including both the front-end and back-end development. The front end consists of the user interface
+                (or UI), and the back end handles the business logic and application workflows that run behind the
+                scenes.
+                Full stack developers possess the skills and knowledge to work across the entire technology stack,
+                enabling seamless user experiences and developing robust backends.
+            </p>
+            <br>
+            <p>A full-stack developer is a software developer who is proficient in both frontend and backend development. This
+                means they can work on the entire technology stack of a web application, from designing user interfaces to
+                managing databases and server-side logic.
             </p>
         </div>
-        <p>Back-end development — more than just writing code
-            Back-end development involves more than just writing code. Full stack developers have a keen understanding of server architecture and API development. They design and implement RESTful APIs that enable seamless communication between the front-end and back-end components of the application. By creating well-structured and documented APIs, they facilitate easy integration and ensure that the front-end developers can efficiently interact with the back-end services.</p>
+        <img src="{% static 'img/Full Stack.png' %}" alt="">
     </div>
+    <h2>FRONT-END DEVELOPER</h2>
+    <div class="section">
+        <img src="{% static 'img/Frontend.jpg' %}" alt="">
+        <div class="front-end">
+            <h4>What is a Front-end developer?</h4>
+            <hr>
+            <p>A frontend developer focuses on the client-side of web applications, meaning everything that users interact
+                with directly in their browsers. Their main goal is to create a visually appealing, responsive, and
+                user-friendly experience.
+            </p>
+            <br>
+            <p>The front end is the face of a web application, the part that users interact with directly. Full stack web
+                developers possess a deep understanding of front-end technologies, including HTML, CSS, and JavaScript. They
+                leverage these foundational languages to structure, style, and enhance the visual appeal of web pages.
+            </p>
+            <br>
+            <p>
+                Full stack developers also stay current with the ever-evolving front-end landscape, constantly exploring and
+                mastering the latest technologies and frameworks. Whether it's harnessing the power of React to build
+                dynamic and interactive user interfaces, leveraging Angular's robust features for complex web applications,
+                or embracing the simplicity and flexibility of Vue.js, full stack web developers are well-versed in a wide
+                range of tools.
+            </p>
+            <br>
+            <p>Full stack developers understand the importance of creating responsive designs that seamlessly adapt to
+                various devices and screen sizes. They employ CSS frameworks like Bootstrap or Foundation to streamline the
+                development process and ensure a consistent and visually appealing user interface across different
+                platforms.
+            </p>
+            <br>
+        </div>
+    </div>
+    <h2>BACK-END DEVELOPER</h2>
+    <div class="section back-end">
+        <div>
+            <h4>What is a Back-End Developer?</h4>
+            <hr>
+            <p>Full stack developers are proficient in server-side languages such as Python, Ruby, PHP, and JavaScript,
+                allowing them to build robust and scalable back-end systems. Back-end developers play a crucial role in
+                designing and implementing the application's core functionality, handling data management, and ensuring
+                smooth integration with databases like MySQL, MongoDB, or PostgreSQL.
+    
+                Additionally, they possess the skills to write clean, efficient, and maintainable code that powers the
+                application's back-end logic. Whether it's Python's simplicity and versatility, Ruby's elegance and
+                readability, PHP's widespread adoption, or Node.js's event-driven architecture, full stack developers are
+                well-versed in multiple programming languages and can choose the best fit for the project at hand.
+            </p>
+            <br>
+            <p>Back-end development — more than just writing code
+                Back-end development involves more than just writing code. Full stack developers have a keen understanding
+                of server architecture and API development. They design and implement RESTful APIs that enable seamless
+                communication between the front-end and back-end components of the application. By creating well-structured
+                and documented APIs, they facilitate easy integration and ensure that the front-end developers can
+                efficiently interact with the back-end services.</p>
+        </div>
+        <img src="{% static 'img/Backend.png' %}" alt="">
+    </div>
+</div>
 {% endblock %}
