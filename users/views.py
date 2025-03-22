@@ -18,10 +18,31 @@ class ProfileListView(ListView):
     template_name = "content/profile_list.html"
     model = Profile
 
+    def get_queryset(self):
+        search=self.request.GET.get('search')
+        if search:
+            # apply the filter
+            results=Profile.objects.filter(name__contains=search)
+            return results
+        else:
+            # no filter, return all
+            return Profile.objects.all()
+
+    def get_filtered_data(self, search):
+        if search:
+            print("Apllying filter")
+            # apply the filter
+            results=Profile.objects.filter(name__contains=search).order_by("created_at").reverse
+            return results
+        else:
+            # no filter, return all
+            return Profile.objects.all().order_by("created_at").reverse()
+
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
-        all_posts=Profile.objects.all()
-        context["profile_list"]=all_posts.order_by("name").reverse()
+        search_text=self.request.GET.get('search')
+        all_posts=self.get_filtered_data(search_text)
+        context["profile_list"]=all_posts
         return context
     
 class ProfileDetailView(DetailView):
@@ -47,7 +68,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset = None):
         profile=super().get_object(queryset)
 
-        if profile.author != self.request.user:
+        if profile.user != self.request.user:
             raise PermissionDenied("You are no the owner of this profile!")
         else:
             return profile

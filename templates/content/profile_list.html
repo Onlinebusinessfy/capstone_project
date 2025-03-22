@@ -13,13 +13,20 @@
 <div class="post-list">
     <div class="header">
         <h1>Profiles</h1>
-        <a class="btn btn-outline-primary" href="{% url 'profile_create' %}">Create New Post</a>
+    </div>
+
+    <div class="filter">
+        <form class="d-flex" role="search" method="get">
+            <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+            <a class="btn btn-outline-primary" href="{% url 'profile_create' %}">Create New Profile</a>
+        </form>
     </div>
 
     <div class="container">
         <div class="row" style="display: flex; justify-content: center;">
             {% for item in profile_list %}
-            <div class="col-md-3 col-sm-6" style="display: flex; justify-content: center;">
+            <div class="col-md-3 col-sm-6 bottom-card" style="display: flex; justify-content: center; margin-bottom: 10px;">
                 <div class="card" style="width: 18rem; margin-top: 15px;">
                     <div class="card-body">
                         {% if item.picture %}
