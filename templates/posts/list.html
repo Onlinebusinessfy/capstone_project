@@ -33,11 +33,20 @@ Posts
                 <a href="{% url 'post_detail' item.id %}" class="card-link">Continue reading...</a>
             </div>
         </div>
-        {% if item.number_of_likes > 1 %}
-        <strong class="text-secondary">{{ item.number_of_likes }} Likes{{ item.number_of_likes|pluralize }}</strong>
-        {% else %}
-        <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
-        {% endif %}
+        <div>
+            {% if item.number_of_likes %}
+            <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
+            {% else %}
+            <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
+            {% endif %}
+        </div>
+        <div>
+            {% if item.number_of_comments %}
+            <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize }}</strong>
+            {% else %}
+            <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize }}</strong>
+            {% endif %}
+        </div>
         {% endfor %}
     </div>
 </div>
