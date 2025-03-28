@@ -1,0 +1,28 @@
+h1{
+    text-align: center;
+    margin-top: 30px;
+}
+
+form{
+    padding-top: 1.5rem;
+    background-color: white;
+    border: 1px solid #3f3f3f;
+    border-radius: 4px;
+    padding: 20px 30px 10px 20px;
+    margin-top: 2rem;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+form a{
+    display: block;
+}
+
+form input[type="submit"] {
+    display: block;
+    margin: 10px auto 0;
+    width: auto;
+    padding: 10px 20px; 
+}
