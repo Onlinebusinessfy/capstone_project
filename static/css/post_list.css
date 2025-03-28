@@ -35,13 +35,13 @@ form button{
 }
 
 .post-card {
-    background-size: cover;  /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center;  /* Centra la imagen */
-    background-repeat: no-repeat;  /* No repite la imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
-    color: white;  /* El texto será blanco sobre el fondo */
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;

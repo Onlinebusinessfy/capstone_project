@@ -4,8 +4,8 @@
 
 .contact-section form{
     padding-top: 1.5rem;
-    background-color: white;
-    border: 1px solid #3f3f3f;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.110);
     border-radius: 4px;
     padding: 20px 30px 10px 20px;
     margin-top: 2rem;
