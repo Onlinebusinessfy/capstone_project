@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Post: {{post.title}}
+Post: {{post.title}}
 {% endblock %}
 
 {% block css %}
@@ -10,34 +10,71 @@
 {% endblock %}
 
 {% block content %}
-    <small>Post id: {{post.id}}</small>
-    <div class="header-post">
-        <h2>{{post.subtitle}}</h2>
-    </div>
-    <div class="post-body">
-        <p>{{post.body}}</p>
-    </div>
-    
-    <h6>Author: {{post.author}}</h6>
-    <strong>Created on: {{post.created_on}}</strong>
-    
+<small>Post id: {{post.id}}</small>
+<div class="header-post">
+    <h2>{{post.subtitle}}</h2>
+</div>
+<div class="post-body">
+    <p>{{post.body}}</p>
+</div>
 
-    {% if user.username == post.author.username %}
-    <a href="{% url 'post_update' post.id %}" class="btn btn-outline-dark"></a>
-    {% endif %}
+<h6>Author: {{post.author}}</h6>
+<strong>Created on: {{post.created_on}}</strong>
 
-    {% if user.is_authenticated %}
-        <form action="{% url 'blogpost_like' object.id %}" method="POST">
-            {% csrf_token %}
 
-            {% if post_is_liked %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Unlike</button>
-            {% else %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Like</button>
-            {% endif %}
-        </form>
+{% if user.username == post.author.username %}
+<a href="{% url 'post_update' post.id %}" class="btn btn-outline-dark"></a>
+{% endif %}
+
+{% if user.is_authenticated %}
+<form action="{% url 'blogpost_like' object.id %}" method="POST">
+    {% csrf_token %}
+
+    {% if post_is_liked %}
+    <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Unlike</button>
     {% else %}
-        <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
+    <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Like</button>
     {% endif %}
-    <strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
+</form>
+{% else %}
+<a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
+{% endif %}
+<strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
+<h2>Comments</h2>
+<div id="comments_section">
+
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ comment_form }}
+            <button class="btn btn-info" type="submit">Add comment</button>
+        </div>
+    </form>
+    {% else %}
+    <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to add a comment!</a><br>
+    {% endif %}
+
+    {% if comments %}
+    <strong class="text-secondary">{{ object.number_of_comments }} Comment {{ object.number_of_comments|pluralize}}</strong>
+    <hr>
+    <ul>
+        {% for comment in comments %}
+        <li>
+            <div>
+                <span>
+                    <strong class="text-info">{{ comment.author }} </strong>
+                    <small class="text-muted">{{ comment.date_posted }}</small>
+                </span>
+                <p>
+                    {{ comment.content|safe }}
+                </p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <strong class="text-secondary">No comments yet...</strong>
+{% endif %}
+</div>
 {% endblock %}

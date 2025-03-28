@@ -5,9 +5,9 @@ from django.views.generic import(
     CreateView,
     UpdateView,
 )
-from .models import Post, Status
+from .models import Post, Status, Postcomments
 from django.urls import reverse_lazy, reverse
-from .forms import PostForm
+from .forms import PostForm, PostComment
 from django.contrib.auth.decorators import login_required #function view
 from django.contrib.auth.mixins import LoginRequiredMixin #class views
 from django.core.exceptions import PermissionDenied
@@ -52,14 +52,32 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-
+        
+        # Likes section
         likes_connected = get_object_or_404(Post, id=self.kwargs['pk'])
         liked = False
+        
         if likes_connected.likes.filter(id=self.request.user.id).exists():
             liked = True
         data['number_of_likes'] = likes_connected.number_of_likes()
         data['post_is_liked'] = liked
+
+        # comments section
+        comments_connected = Postcomments.objects.filter(
+            blogpost_connected=self.get_object()).order_by('created_on')
+        data['comments'] = comments_connected
+        if self.request.user.is_authenticated:
+            data['comment_form'] = PostComment(instance=self.request.user)
+
         return data
+    
+    def post(self, request, *args, **kwargs):
+        new_comment = Postcomments(content=request.POST.get('content'),
+                author=self.request.user,
+                blogpost_connected=self.get_object()
+            )
+        new_comment.save()
+        return self.get(self, request, *args, **kwargs)
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     template_name="posts/create.html"
