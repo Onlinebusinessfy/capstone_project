@@ -6,7 +6,7 @@ h1{
 form{
     padding-top: 1.5rem;
     background-color: white;
-    border: 1px solid #3f3f3f;
+    border: 1px solid rgba(0, 0, 0, 0.110);
     border-radius: 4px;
     padding: 20px 30px 10px 20px;
     margin-top: 2rem;
