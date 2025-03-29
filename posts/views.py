@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import(
     ListView,
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 from .models import Post, Status, Postcomments
 from django.urls import reverse_lazy, reverse
@@ -11,7 +12,7 @@ from .forms import PostForm, PostComment
 from django.contrib.auth.decorators import login_required #function view
 from django.contrib.auth.mixins import LoginRequiredMixin #class views
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.db.models import Count
 
 # Create your views here.
@@ -43,8 +44,29 @@ def BlogPostLike(request, pk):
         post.likes.remove(request.user)
     else:
         post.likes.add(request.user)
+        post.disLikes.remove(request.user)
 
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+
+def BlogPostDisLike(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('blogpost_id'))
+    if post.disLikes.filter(id=request.user.id).exists():
+        post.disLikes.remove(request.user)
+    else:
+        post.disLikes.add(request.user)
+        post.likes.remove(request.user)
+
+    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+
+@login_required
+def delete_comment(request, pk):
+    comment = get_object_or_404(Postcomments, pk=pk)
+
+    if request.user == comment.author or request.user.is_superuser:
+        comment.delete()
+        return redirect(request.META.get('HTTP_REFERER', 'post_list'))
+
+    return HttpResponseForbidden("No tienes permiso para eliminar este comentario.")
 
 class PostDetailView(DetailView):
     template_name="posts/detail.html"
@@ -52,15 +74,21 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-        
+        post = get_object_or_404(Post, id=self.kwargs['pk'])
         # Likes section
-        likes_connected = get_object_or_404(Post, id=self.kwargs['pk'])
         liked = False
-        
-        if likes_connected.likes.filter(id=self.request.user.id).exists():
+        if post.likes.filter(id=self.request.user.id).exists():
             liked = True
-        data['number_of_likes'] = likes_connected.number_of_likes()
+        data['number_of_likes'] = post.number_of_likes()
         data['post_is_liked'] = liked
+
+        # DisLikes section
+        disliked = False
+
+        if post.disLikes.filter(id=self.request.user.id).exists():
+            disliked = True
+        data['number_of_dislikes'] = post.number_of_dislikes()
+        data['post_is_disliked'] = disliked
 
         # comments section
         comments_connected = Postcomments.objects.filter(

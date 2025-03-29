@@ -27,12 +27,16 @@ class Post(models.Model):
         on_delete=models.CASCADE
     )
     likes = models.ManyToManyField(User, related_name='blogpost_like')
+    disLikes = models.ManyToManyField(User, related_name='blogpost_dislike')
 
     def __str__(self):
         return f"{self.title} - {self.author}"
     
     def number_of_likes(self):
         return self.likes.count()
+    
+    def number_of_dislikes(self):
+        return self.disLikes.count()
     
     @property
     def number_of_comments(self):

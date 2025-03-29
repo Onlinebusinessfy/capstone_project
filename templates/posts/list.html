@@ -34,13 +34,21 @@ Posts
             </div>
         </div>
         <div>
+            <!-- likes section -->
             {% if item.number_of_likes %}
             <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
             {% else %}
             <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
             {% endif %}
-        </div>
-        <div>
+
+            <!-- dislikes section -->
+            {% if item.number_of_dislikes %}
+            <strong class="text-secondary">{{ item.number_of_dislikes }} DisLike{{ item.number_of_dislikes|pluralize }}</strong>
+            {% else %}
+            <strong class="text-secondary">{{ item.number_of_dislikes }} DisLike{{ item.number_of_dislikes|pluralize }}</strong>
+            {% endif %}
+
+            <!-- comments section -->
             {% if item.number_of_comments %}
             <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize }}</strong>
             {% else %}

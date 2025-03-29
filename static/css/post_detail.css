@@ -6,3 +6,27 @@
 .post-body p{
     padding: 10px;
 }
+
+.comments-div{
+    border: 1px solid rgba(194, 194, 194, 0.397);
+    margin-bottom: 10px;
+    width: 45%;
+    padding: 10px;
+}
+
+.form-group textarea{
+    height: 10vh;
+    resize: none;
+    width: 45%;
+    margin-bottom: 10px;
+}
+
+.likes-dislikes-div{
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown-menu button{
+    border: none;
+    background-color: white;
+}
