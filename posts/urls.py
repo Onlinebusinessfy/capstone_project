@@ -5,6 +5,8 @@ from .views import(
     PostCreateView,
     PostUpdateView,
     BlogPostLike,
+    BlogPostDisLike,
+    delete_comment,
 )
 
 urlpatterns = [
@@ -13,4 +15,6 @@ urlpatterns = [
     path('create/', PostCreateView.as_view(), name="post_create"),
     path('update/<int:pk>/', PostUpdateView.as_view(), name="post_update"),
     path('blogpost-like/<int:pk>/', BlogPostLike, name="blogpost_like"),
+    path('blogpost-dislike/<int:pk>/', BlogPostDisLike, name="blogpost_dislike"),
+    path('comment/delete/<int:pk>/', delete_comment, name='comment_delete'),
 ]

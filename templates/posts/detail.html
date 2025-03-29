@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 Post: {{post.title}}
@@ -10,44 +11,73 @@ Post: {{post.title}}
 {% endblock %}
 
 {% block content %}
-<small>Post id: {{post.id}}</small>
-<div class="header-post">
-    <h2>{{post.subtitle}}</h2>
+
+<div class="card text-center mb-2">
+    <div class="card-header">
+        Author: {{post.author}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.body}}</p>
+        {% if user.username == post.author.username %}
+        <a href="{% url 'post_update' post.id %}" class="btn btn-outline-dark">Edit Post</a>
+        {% endif %}
+    </div>
+    <div class="card-footer text-body-secondary">
+        Created on: {{post.created_on}}
+    </div>
 </div>
-<div class="post-body">
-    <p>{{post.body}}</p>
+
+<div class="likes-dislikes-div">
+    <div>
+        {% if user.is_authenticated %}
+        <form action="{% url 'blogpost_like' object.id %}" method="POST">
+            {% csrf_token %}
+
+            {% if post_is_liked %}
+            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Unlike</button>
+            {% else %}
+            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Like</button>
+            {% endif %}
+        </form>
+
+        {% else %}
+        <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this
+            article!</a><br>
+        {% endif %}
+        <strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
+    </div>
+
+    <div>
+        {% if user.is_authenticated %}
+        <form action="{% url 'blogpost_dislike' object.id %}" method="POST">
+            {% csrf_token %}
+
+            {% if post_is_disliked %}
+            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Remove DisLike</button>
+            {% else %}
+            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">DisLike</button>
+            {% endif %}
+        </form>
+
+        {% else %}
+        <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this
+            article!</a><br>
+        {% endif %}
+        <strong class="text-secondary">{{ number_of_dislikes }} DisLike{{ number_of_dislikes|pluralize }}</strong>
+    </div>
 </div>
 
-<h6>Author: {{post.author}}</h6>
-<strong>Created on: {{post.created_on}}</strong>
 
 
-{% if user.username == post.author.username %}
-<a href="{% url 'post_update' post.id %}" class="btn btn-outline-dark"></a>
-{% endif %}
-
-{% if user.is_authenticated %}
-<form action="{% url 'blogpost_like' object.id %}" method="POST">
-    {% csrf_token %}
-
-    {% if post_is_liked %}
-    <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Unlike</button>
-    {% else %}
-    <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Like</button>
-    {% endif %}
-</form>
-{% else %}
-<a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
-{% endif %}
-<strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
 <h2>Comments</h2>
 <div id="comments_section">
 
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
-            {{ comment_form }}
+            {{ comment_form|crispy }}
             <button class="btn btn-info" type="submit">Add comment</button>
         </div>
     </form>
@@ -56,25 +86,70 @@ Post: {{post.title}}
     {% endif %}
 
     {% if comments %}
-    <strong class="text-secondary">{{ object.number_of_comments }} Comment {{ object.number_of_comments|pluralize}}</strong>
+    <strong class="text-secondary">{{ object.number_of_comments }}
+        Comment{{object.number_of_comments|pluralize}}</strong>
     <hr>
     <ul>
         {% for comment in comments %}
         <li>
-            <div>
-                <span>
-                    <strong class="text-info">{{ comment.author }} </strong>
-                    <small class="text-muted">{{ comment.date_posted }}</small>
-                </span>
+            <div class="comments-div">
+                <div class="comments-header" style="position: relative;">
+                    <span>
+                        <strong class="text-info">{{ comment.author }} </strong>
+                    </span>
+                    <div class="btn-group dropend" style="position: absolute; right: 0;">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Options
+                        </button>
+                        <ul class="dropdown-menu">
+                            <button type="button" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal-{{ comment.pk }}">
+                                Delete Comment
+                            </button>
+                        </ul>
+                    </div>
+                </div>
                 <p>
                     {{ comment.content|safe }}
                 </p>
+                <small class="text-muted">{{ comment.created_on }}</small>
+
+                
+                <!-- Modal -->
+                {% if comment.user == request.user or request.user.is_superuser %}
+                <div class="modal fade" id="deleteModal-{{ comment.pk }}" tabindex="-1"
+                    aria-labelledby="deleteModalLabel-{{ comment.pk }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel-{{ comment.pk }}">Are you sure you
+                                    want to delete this comment?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Do you really want to delete this comment? This action cannot be undone.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <!-- Delete form -->
+                                <form action="{% url 'comment_delete' comment.pk %}" method="POST"
+                                    id="delete-comment-form-{{ comment.pk }}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </li>
         {% endfor %}
     </ul>
     {% else %}
     <strong class="text-secondary">No comments yet...</strong>
-{% endif %}
+    {% endif %}
 </div>
 {% endblock %}
