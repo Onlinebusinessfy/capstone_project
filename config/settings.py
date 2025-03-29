@@ -140,15 +140,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import environ
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 env = environ.Env()
-
-env_path = os.path.join(BASE_DIR, '.env')
-if os.path.exists(env_path):
-    environ.Env.read_env(env_path)
-else:
-    print("DEBUG: .env file NOT FOUND!")
+environ.Env.read_env()
 
 #Email Configuration
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
