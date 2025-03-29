@@ -30,7 +30,7 @@
 
       <div class="d-flex" role="search">
         {% if user.is_authenticated %}
-            <span class="btn btn-outline-light">{{user.username}}</span>
+            <span class="btn username">{{user.username}}</span>
             <form method="POST" action="{% url 'logout' %}">
               {% csrf_token %}
               <button class="btn btn-outline-light" type="submit">Log Out</button>

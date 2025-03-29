@@ -28,9 +28,13 @@ def contact_view(request):
                 "Portfolio email",
                 message,
                 email,
-                ['lloyd777999@gmail.com'],
+                ['lloyd777999@gmail.com', 'christianalbrand@gmail.com'],
                 html_message=message_body
             )
+
+            # clear the form and send the user to the same page
+            return render(request, "pages/contact.html", {'form': ContactForm(), "sent": 1})
+
         else:
             print("Invalid form")
 
@@ -38,7 +42,7 @@ def contact_view(request):
         #show the page
         form=ContactForm()
 
-    return render(request, "pages/contact.html", {'form': form})
+    return render(request, "pages/contact.html", {'form': form,  "sent": 0})
 
 def recruitment_view(request):
     return render(request, 'pages/recruit.html')
