@@ -15,14 +15,44 @@
 
     <h1>Contact me</h1>
 
+    <input type="hidden" value="{{sent}}" id="sentInput">
+
+    {% if sent == 1 %} 
+    <div class="alert alert-success"> 
+        Message sent, thank you!
+    </div>
+    {% endif %}
+
     <form method="post" class="center-column">
         {% csrf_token %}
         {{ form|crispy }}
 
         <div class="field">
-            <button class="button-33 btn btn-primary">Send Message</button>
+            <button class="button-33 btn btn-primary" type="submit">Send Message</button>
         </div>
     </form>
 
 </section>
+{% endblock %}
+
+{% block js %}
+<script>
+
+    function init() {
+        console.log("JS loaded");
+
+        const sent = document.getElementById("sentInput").value;
+        console.log(sent)
+        if(sent == "1") {
+            setTimeout(
+                () => document.getElementById("sentInput").remove(),
+                500
+            );
+            
+        }
+    }
+
+    window.onload = init;
+
+</script>
 {% endblock %}

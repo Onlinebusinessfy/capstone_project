@@ -131,9 +131,30 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+import environ
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env = environ.Env()
+
+env_path = os.path.join(BASE_DIR, '.env')
+if os.path.exists(env_path):
+    environ.Env.read_env(env_path)
+else:
+    print("DEBUG: .env file NOT FOUND!")
+
+#Email Configuration
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_USE_SSL=False
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER=env('SMTP_EMAIL')
+EMAIL_HOST_PASSWORD=env('SMTP_PASS')

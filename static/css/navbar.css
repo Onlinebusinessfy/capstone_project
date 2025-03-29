@@ -23,3 +23,8 @@
 .nav-link:hover {
     transform: scale(1.1);
 }
+
+.username{
+    border: none !important;
+    color: white !important;
+}
