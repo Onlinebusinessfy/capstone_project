@@ -7,6 +7,7 @@ from .views import(
     BlogPostLike,
     BlogPostDisLike,
     delete_comment,
+    delete_Post,
 )
 
 urlpatterns = [
@@ -17,4 +18,5 @@ urlpatterns = [
     path('blogpost-like/<int:pk>/', BlogPostLike, name="blogpost_like"),
     path('blogpost-dislike/<int:pk>/', BlogPostDisLike, name="blogpost_dislike"),
     path('comment/delete/<int:pk>/', delete_comment, name='comment_delete'),
+    path('post/delete/<int:pk>/', delete_Post, name='post_delete'),
 ]

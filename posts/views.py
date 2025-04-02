@@ -58,6 +58,14 @@ def BlogPostDisLike(request, pk):
 
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
 
+def delete_Post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.user == post.author or request.user.is_superuser:
+        post.delete()
+        return redirect(request.META.get('HTTP_REFERER', 'post_list'))
+    return HttpResponseForbidden("You don't have permissions to delete this post")
+
 @login_required
 def delete_comment(request, pk):
     comment = get_object_or_404(Postcomments, pk=pk)
@@ -66,7 +74,8 @@ def delete_comment(request, pk):
         comment.delete()
         return redirect(request.META.get('HTTP_REFERER', 'post_list'))
 
-    return HttpResponseForbidden("No tienes permiso para eliminar este comentario.")
+    return HttpResponseForbidden("You don't have permissions to delete this comment")
+
 
 class PostDetailView(DetailView):
     template_name="posts/detail.html"

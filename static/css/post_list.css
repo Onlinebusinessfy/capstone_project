@@ -34,6 +34,16 @@ form button{
     margin-left: 20px;
 }
 
+.card{
+    border: none;
+    padding: 0.5rem;
+}
+
+.delete-post-btn{
+    position:absolute;
+    right:3.125rem;
+}
+
 .post-card {
     background-size: cover;
     background-position: center;
@@ -46,7 +56,6 @@ form button{
     justify-content: center;
     align-items: center;
 }
-
 
 .card-body {
     background-color: rgba(0, 0, 0, 0.664);  
