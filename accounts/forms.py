@@ -15,3 +15,12 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+    
+class PasswordForm(forms.Form):
+    email=forms.CharField(
+        max_length=200,
+        widget=forms.TextInput(attrs={
+            'placeholder':'Your email',
+            'type': 'email'
+        })
+    )
