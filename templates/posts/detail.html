@@ -33,12 +33,7 @@ Post: {{post.title}}
         {% if user.is_authenticated %}
         <form action="{% url 'blogpost_like' object.id %}" method="POST">
             {% csrf_token %}
-
-            {% if post_is_liked %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Unlike</button>
-            {% else %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Like</button>
-            {% endif %}
+            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info"><i class="fa-solid fa-thumbs-up"></i></button>
         </form>
 
         {% else %}
@@ -52,12 +47,7 @@ Post: {{post.title}}
         {% if user.is_authenticated %}
         <form action="{% url 'blogpost_dislike' object.id %}" method="POST">
             {% csrf_token %}
-
-            {% if post_is_disliked %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">Remove DisLike</button>
-            {% else %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info">DisLike</button>
-            {% endif %}
+            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info"><i class="fa-solid fa-thumbs-down"></i></button>
         </form>
 
         {% else %}
@@ -70,7 +60,7 @@ Post: {{post.title}}
 
 
 
-<h2>Comments</h2>
+<h2>Comments <i class="fa-solid fa-comments"></i></h2>
 <div id="comments_section">
 
     {% if user.is_authenticated %}
@@ -78,7 +68,7 @@ Post: {{post.title}}
         {% csrf_token %}
         <div class="form-group">
             {{ comment_form|crispy }}
-            <button class="btn btn-info" type="submit">Add comment</button>
+            <button class="btn btn-info" type="submit">Add comment <i class="fa-solid fa-comment"></i></button>
         </div>
     </form>
     {% else %}
@@ -86,8 +76,7 @@ Post: {{post.title}}
     {% endif %}
 
     {% if comments %}
-    <strong class="text-secondary">{{ object.number_of_comments }}
-        Comment{{object.number_of_comments|pluralize}}</strong>
+    <strong class="text-secondary">{{ object.number_of_comments }}Comment{{object.number_of_comments|pluralize}}</strong>
     <hr>
     <ul>
         {% for comment in comments %}
@@ -97,6 +86,7 @@ Post: {{post.title}}
                     <span>
                         <strong class="text-info">{{ comment.author }} </strong>
                     </span>
+                    {% if comment.author == request.user or request.user.is_superuser %}
                     <div class="btn-group dropend" style="position: absolute; right: 0;">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -109,6 +99,7 @@ Post: {{post.title}}
                             </button>
                         </ul>
                     </div>
+                    {% endif %}
                 </div>
                 <p>
                     {{ comment.content|safe }}
@@ -117,7 +108,7 @@ Post: {{post.title}}
 
                 
                 <!-- Modal -->
-                {% if comment.user == request.user or request.user.is_superuser %}
+                {% if comment.author == request.user or request.user.is_superuser %}
                 <div class="modal fade" id="deleteModal-{{ comment.pk }}" tabindex="-1"
                     aria-labelledby="deleteModalLabel-{{ comment.pk }}" aria-hidden="true">
                     <div class="modal-dialog">

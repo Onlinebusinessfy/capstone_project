@@ -137,6 +137,9 @@ LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+TIME_ZONE = 'America/Los_Angeles'
+USE_TZ = True
+
 
 import environ
 

@@ -21,39 +21,51 @@ Posts
             <a class="btn btn-outline-primary" href="{% url 'post_create' %}">Create New Post</a>
         </div>
         {% for item in post_list %}
-        <hr>
-        <div class="post-card"
-            style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}');">
-            <div class="card-body">
-                <h5 class="card-title">{{item.title}}</h5>
-                <p class="card-text">{{item.subtitle}}</p>
-                <p class="card-text"><small class="text-body-secondary">Author: {{item.author}}</small></p>
-                <p class="card-text">{{post.body|truncatechars:20}}</p>
-                <small>{{item.created_on}}</small><br />
-                <a href="{% url 'post_detail' item.id %}" class="card-link">Continue reading...</a>
+        <div style="background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <div class="post-card"
+                style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}'); background-size: cover; background-position: center; border-radius: 8px; padding: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.subtitle }}</p>
+                    <p class="card-text"><small class="text-body-secondary">Author: {{ item.author }}</small></p>
+                    <p class="card-text">{{ item.body|truncatechars:50 }}</p>
+                    <small>{{ item.created_on }}</small><br />
+                    <a href="{% url 'post_detail' item.id %}" class="card-link">Continue reading...</a>
+                </div>
             </div>
-        </div>
-        <div>
-            <!-- likes section -->
-            {% if item.number_of_likes %}
-            <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
-            {% else %}
-            <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize }}</strong>
-            {% endif %}
-
-            <!-- dislikes section -->
-            {% if item.number_of_dislikes %}
-            <strong class="text-secondary">{{ item.number_of_dislikes }} DisLike{{ item.number_of_dislikes|pluralize }}</strong>
-            {% else %}
-            <strong class="text-secondary">{{ item.number_of_dislikes }} DisLike{{ item.number_of_dislikes|pluralize }}</strong>
-            {% endif %}
-
-            <!-- comments section -->
-            {% if item.number_of_comments %}
-            <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize }}</strong>
-            {% else %}
-            <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize }}</strong>
-            {% endif %}
+            <div style="margin-top: 10px;">
+                <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize}}</strong>
+                <strong class="text-secondary">{{ item.number_of_dislikes }} DisLike{{ item.number_of_dislikes|pluralize}}</strong>
+                <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize}}</strong>
+                {% if item.author == request.user or request.user.is_superuser %}
+                <button class="delete-post-btn btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ item.pk }}"> Delete Post</button>
+                <div class="modal fade" id="deleteModal-{{ item.pk }}" tabindex="-1"
+                    aria-labelledby="deleteModalLabel-{{ item.pk }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel-{{ item.pk }}">Are you sure you
+                                    want to delete this post?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Do you really want to delete this post? This action cannot be undone.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <!-- Delete form -->
+                                <form action="{% url 'post_delete' item.pk %}" method="POST"
+                                    id="delete-post-form-{{ item.pk }}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
         </div>
         {% endfor %}
     </div>
