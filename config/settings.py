@@ -144,7 +144,7 @@ USE_TZ = True
 import environ
 
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 #Email Configuration
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'

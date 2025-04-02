@@ -4,13 +4,16 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 from .models import Profile
 from .forms import ProfileForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
-
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 
 # Create your views here.
 
@@ -48,6 +51,7 @@ class ProfileListView(ListView):
 class ProfileDetailView(DetailView):
     template_name="content/profile_detail.html"
     model=Profile
+    context_object_name = 'profile'
 
 class ProfileCreateView(LoginRequiredMixin, CreateView):
     template_name="content/profile_create.html"
@@ -72,3 +76,13 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
             raise PermissionDenied("You are no the owner of this profile!")
         else:
             return profile
+        
+@login_required
+def delete_profile(request, pk):
+    profile = get_object_or_404(Profile, pk=pk)
+
+    if request.user == profile.user or request.user.is_superuser:
+        profile.delete()
+        return redirect('profile_list')
+
+    return HttpResponseForbidden("You can't delete this profile.")
