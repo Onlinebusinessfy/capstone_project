@@ -82,13 +82,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
+# Load Env vars
+import environ
+
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+db_name = env('DB_NAME')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / db_name,
     }
 }
 
@@ -145,11 +153,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TIME_ZONE = 'America/Los_Angeles'
 USE_TZ = True
 
-
-import environ
-
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 #Email Configuration
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
