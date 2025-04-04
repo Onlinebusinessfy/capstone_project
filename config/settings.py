@@ -93,6 +93,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 db_name = env('DB_NAME')
+print("Using db: " + db_name)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
