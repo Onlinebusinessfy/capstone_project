@@ -3,12 +3,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Status(models.Model):
-    name=models.CharField(max_length=128)
-    description=models.CharField(max_length=256)
-
-    def __str__(self):
-        return self.name
 
 class Post(models.Model):
     title=models.CharField(max_length=128)
@@ -20,12 +14,6 @@ class Post(models.Model):
     body=models.TextField()
     image=models.ImageField(upload_to="upload/", blank=True, null=True)
     created_on=models.DateTimeField(auto_now_add=True)
-    status=models.ForeignKey(
-        Status,
-        null=True,
-        default=None,
-        on_delete=models.CASCADE
-    )
     likes = models.ManyToManyField(User, related_name='blogpost_like')
     disLikes = models.ManyToManyField(User, related_name='blogpost_dislike')
 

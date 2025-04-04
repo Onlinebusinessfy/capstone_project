@@ -6,7 +6,7 @@ from django.views.generic import(
     UpdateView,
     DeleteView,
 )
-from .models import Post, Status, Postcomments
+from .models import Post, Postcomments
 from django.urls import reverse_lazy, reverse
 from .forms import PostForm, PostComment
 from django.contrib.auth.decorators import login_required #function view
