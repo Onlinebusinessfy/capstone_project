@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-5k=3n7fo_=_%=!fpq9$sv(rs+)%*zkzp(xol$e44knpkxmsf0u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".herokuapp.com"
+]
 
 
 # Application definition
@@ -48,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,13 +82,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
+# Load Env vars
+import environ
+
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+db_name = env('DB_NAME')
+
+print("Using db: " + db_name)
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / db_name,
     }
 }
 
@@ -140,11 +156,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TIME_ZONE = 'America/Los_Angeles'
 USE_TZ = True
 
-
-import environ
-
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 #Email Configuration
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
