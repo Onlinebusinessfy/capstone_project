@@ -60,7 +60,7 @@ class ProfileCreateView(LoginRequiredMixin, CreateView):
     success_url=reverse_lazy("profile_list")
 
     def form_valid(self, form):
-        form.instance.author=self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
     
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
