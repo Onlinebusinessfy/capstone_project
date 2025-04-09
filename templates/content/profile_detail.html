@@ -26,7 +26,11 @@
     {% if user.is_authenticated %}
     {% if profile.user == request.user or request.user.is_superuser %}
     <div class="buttons-func">
+        {% if profile.picture %}
         <a href="{% url 'profile_update' profile.id %}" class="btn btn-primary" style="margin-top: 10px;">Edit Profile</a>
+        {% else %}
+        <img class="image-format" src="{% static 'images/default.jpg' %}" alt="">
+        {% endif %}
         <button type="button" data-bs-toggle="modal"
         data-bs-target="#deleteModal-{{ profile.pk }}" class="btn btn-danger" style="margin-top: 10px;">
         Delete Profile
