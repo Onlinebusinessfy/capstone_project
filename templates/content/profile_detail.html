@@ -10,22 +10,28 @@
 {% endblock %}
 
 {% block content %}
+    <div class="profile-image">
+        <img src="{{ profile.picture.url }}" alt="">
+    </div>
     <h1>{{profile.name}}</h1>
-    <h5>{{profile.phone_number}}</h5>
-    <h6>{{profile.city}}</h6>
-    <h6>{{profile.state}}</h6>
-    <h6>{{profile.user}}</h6>
+    <h5><b>Telephone: </b>{{profile.phone_number}}</h5>
+    <h6><b>City: </b>{{profile.city}}</h6>
+    <h6><b>State: </b>{{profile.state}}</h6>
+    <h6><b>User: </b>{{profile.user}}</h6>
+    <h6><b>Description: </b></h6>
     <p>{{profile.description}}</p>
-    <small>{{profile.created_at}}</small>
+    <small><b>Created on:</b>{{profile.created_at}}</small>
     <br>
 
     {% if user.is_authenticated %}
     {% if profile.user == request.user or request.user.is_superuser %}
-    <a href="{% url 'profile_update' profile.id %}" class="btn btn-primary" style="margin-top: 10px;">Edit Profile</a>
-    <button type="button" data-bs-toggle="modal"
-    data-bs-target="#deleteModal-{{ profile.pk }}" class="btn btn-danger" style="margin-top: 10px;">
-    Delete Profile
-    </button>
+    <div class="buttons-func">
+        <a href="{% url 'profile_update' profile.id %}" class="btn btn-primary" style="margin-top: 10px;">Edit Profile</a>
+        <button type="button" data-bs-toggle="modal"
+        data-bs-target="#deleteModal-{{ profile.pk }}" class="btn btn-danger" style="margin-top: 10px;">
+        Delete Profile
+        </button>
+    </div>
     {% endif %}
     {% endif %}
 

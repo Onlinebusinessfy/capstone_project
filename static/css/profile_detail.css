@@ -1,0 +1,49 @@
+.profile-image {
+    text-align: center;
+    padding: 100px;
+}
+
+.profile-image img {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 32px;
+    text-align: center;
+}
+
+h5, h6, p, small {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 4px 0;
+    color: #444;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px;
+    flex-direction: column;
+}
+
+small{
+    margin-top: 40px;
+    margin-bottom: -73px;
+}
+
+p{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.buttons-func button, 
+.buttons-func a{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

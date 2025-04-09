@@ -30,9 +30,9 @@
                 <div class="card" style="width: 18rem; margin-top: 15px;">
                     <div class="card-body">
                         {% if item.picture %}
-                        <img style="max-width: 100%;" src="{{ item.picture.url }}" alt="">
+                        <img class="image-format" src="{{ item.picture.url }}" alt="">
                         {% else %}
-                        <img style="max-width: 100%;" src="{% static 'images/default.jpg' %}" alt="">
+                        <img class="image-format" src="{% static 'images/default.jpg' %}" alt="">
                         {% endif %}
                         <h5 class="card-title">{{item.name}}</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondarydy">Telephone: {{item.phone_number}}</h6>
