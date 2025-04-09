@@ -1,32 +1,239 @@
-.post-body{
+.post-body {
     background-color: rgba(189, 189, 189, 0.767);
     border-radius: 10px;
 }
 
-.post-body p{
+.post-body p {
     padding: 10px;
 }
 
-.comments-div{
+.comments-div {
     border: 1px solid rgba(194, 194, 194, 0.397);
     margin-bottom: 10px;
     width: 45%;
     padding: 10px;
 }
 
-.form-group textarea{
+.form-group textarea {
     height: 10vh;
     resize: none;
     width: 45%;
     margin-bottom: 10px;
 }
 
-.likes-dislikes-div{
+.likes-dislikes-div {
     display: flex;
     gap: 20px;
 }
 
-.dropdown-menu button{
+.card-text {
+    text-align: start;
+    font-size: 1rem;
+    line-height: 1.7;
+    padding: 1rem;
+    background-color: #ffffff;
+    color: #212529;
+    border-radius: 0.5rem;
+    word-break: break-word;
+}
+
+
+.dropdown-menu button {
     border: none;
     background-color: white;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.card-header,
+.card-footer {
+    background-color: #f8f9fa;
+    font-weight: 500;
+}
+
+.card-body {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.reaction-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.reaction-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.reaction-group:hover {
+    background-color: #e2e6ea;
+}
+
+.reaction-btn {
+    background: none;
+    border: none;
+    color: #0d6efd;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.reaction-count {
+    font-size: 1.1rem;
+    color: #343a40;
+    font-weight: 500;
+}
+
+.comments_section {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.comments-div {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.comments-header {
+    margin-bottom: 0.5rem;
+}
+
+h2 i {
+    color: #0d6efd;
+    margin-left: 0.3rem;
+}
+
+.btn-group .dropdown-menu button {
+    border: none;
+    background: none;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    text-align: left;
+}
+
+.btn-group .dropdown-menu button:hover {
+    background-color: #f8f9fa;
+}
+
+.form-group {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.style-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #1a1a1b;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    white-space: pre-line;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.custom-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #343a40;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    text-transform: capitalize;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s ease-in-out;
+}
+
+.btn-info {
+    background-color: #0d6efd;
+    border: #0d6efd;
+}
+
+.text-info {
+    background-color: #8b8b8b4d;
+    color: #0d6efd !important;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+@media screen and (max-width:767px) {
+    .reaction-bar {
+        justify-content: center;
+    }
+
+    .form-group textarea {
+        width: 100%;
+    }
+
+    .comments-div {
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 1.2rem 1rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+        line-height: 2;
+    }
+
+    .comment-options {
+        position: absolute;
+        top: 0.3rem;
+        right: 0.3rem;
+        z-index: 10;
+    }
+
+    .options-btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 1rem;
+        border: none;
+        background: transparent;
+        color: #6c757d;
+    }
+
+    .dropdown-menu {
+        right: 0 !important;
+        left: 45% !important;
+        top: 100% !important;
+        margin-top: 0.3rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        padding: 0.2rem 0;
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 1rem;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f1f1f1;
+    }
+
 }
