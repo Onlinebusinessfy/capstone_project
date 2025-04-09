@@ -17,8 +17,8 @@ Post: {{post.title}}
         Author: {{post.author}}
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{post.title}}</h5>
-        <p class="card-text">{{post.body}}</p>
+        <h5 class="card-title custom-title">{{ post.title }}</h5>
+        <p class="card-text style-text">{{ post.body }}</p>
         {% if user.username == post.author.username %}
         <a href="{% url 'post_update' post.id %}" class="btn btn-outline-dark">Edit Post</a>
         {% endif %}
@@ -28,33 +28,40 @@ Post: {{post.title}}
     </div>
 </div>
 
-<div class="likes-dislikes-div">
+<div class="reaction-bar">
     {% if user.is_authenticated %}
-    <div>
-        <form action="{% url 'blogpost_like' object.id %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info"><i class="fa-solid fa-thumbs-up"></i></button>
-        </form>
-        <strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
-    </div>
+        <!-- Like -->
+        <div class="reaction-group">
+            <form action="{% url 'blogpost_like' object.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="blogpost_id" value="{{ object.id }}" class="reaction-btn">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <span class="reaction-count ms-2">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</span>
+                </button>
+            </form>
+        </div>
 
-    <div>
-        <form action="{% url 'blogpost_dislike' object.id %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" name="blogpost_id" value="{{object.id}}" class="btn btn-info"><i class="fa-solid fa-thumbs-down"></i></button>
-        </form>
-        <strong class="text-secondary">{{ number_of_dislikes }} DisLike{{ number_of_dislikes|pluralize }}</strong>
-    </div>
-    
+        <!-- Dislike -->
+        <div class="reaction-group">
+            <form action="{% url 'blogpost_dislike' object.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="blogpost_id" value="{{ object.id }}" class="reaction-btn">
+                    <i class="fa-solid fa-thumbs-down"></i>
+                    <span class="reaction-count ms-2">{{ number_of_dislikes }} Dislike{{ number_of_dislikes|pluralize }}</span>
+                </button>
+            </form>
+        </div>
     {% else %}
-        <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this article!</a><br>
+        <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">
+            Log in to react!
+        </a>
     {% endif %}
 </div>
 
 
 
-<h2>Comments <i class="fa-solid fa-comments"></i></h2>
-<div id="comments_section">
+<h2> Comments <i class="fa-solid fa-comments"></i></h2>
+<div class="comments_section">
 
     {% if user.is_authenticated %}
     <form method="POST">
@@ -69,7 +76,7 @@ Post: {{post.title}}
     {% endif %}
 
     {% if comments %}
-    <strong class="text-secondary">{{ object.number_of_comments }}Comment{{object.number_of_comments|pluralize}}</strong>
+    <strong class="text-secondary">{{ object.number_of_comments }} Comment{{object.number_of_comments|pluralize}}</strong>
     <hr>
     <ul>
         {% for comment in comments %}
@@ -98,7 +105,6 @@ Post: {{post.title}}
                     {{ comment.content|safe }}
                 </p>
                 <small class="text-muted">{{ comment.created_on }}</small>
-
                 
                 <!-- Modal -->
                 {% if comment.author == request.user or request.user.is_superuser %}
