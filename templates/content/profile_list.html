@@ -32,7 +32,7 @@
                         {% if item.picture %}
                         <img class="image-format" src="{{ item.picture.url }}" alt="">
                         {% else %}
-                        <img class="image-format" src="{% static 'images/default.jpg' %}" alt="">
+                        <img class="image-format" src="{% static 'img/default.jpg' %}" alt="">
                         {% endif %}
                         <h5 class="card-title">{{item.name}}</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondarydy">Telephone: {{item.phone_number}}</h6>
