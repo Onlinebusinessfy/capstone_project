@@ -69,36 +69,78 @@ form button{
 
 
 @media screen and (max-width: 767px){
-    .post-list .card{
-        width: calc(100% - 24px);
-    }
-
-    .post-list .card h5{
-        text-align: center;
-        font-size: 26px;
-    }
-
-    .post-list .card h6{
-        text-align: center;
-    }
-
-    .post-list .card a{
-        margin-top: 0.7rem;
-        display: block;
-        text-align: right;
+    .post-list .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
     }
 
     .post-list .header h1{
+        margin-left: 0px;
+    }
+
+    .number-of{
+        font-size: smaller;
+    }
+    
+    .post-list .header form.d-flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .post-list .header .form-control,
+    .post-list .header .btn {
+        width: 100%;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+    }
+    
+    .post-list .header a.btn {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    
+    .post-card{
+        width: 100%;
+    }
+    .post-card {
+        padding: 10px;
+        margin: 0 12px 20px 12px;
+        border-radius: 8px;
+        display: block;
+    }
+    
+    .post-card .card-body {
+        padding: 15px;
         text-align: left;
-        padding-top: 0.5rem;
-        margin-left: 0;
+        font-size: 0.95rem;
+    }
+    
+    .post-card h5 {
+        font-size: 22px;
+        text-align: center;
+    }
+    
+    .post-card p,
+    .post-card small {
+        font-size: 16px;
+        text-align: justify;
+    }
+    
+    .post-card a.card-link {
+        display: block;
+        text-align: right;
+        margin-top: 10px;
     }
 
-    .post-list .container{
-        margin-bottom: 0.7rem;
+    .delete-post-btn {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
     }
 
-    .post-list .header a{
-        margin-right: 0;
+    .post-card{
+        display: contents;
     }
+    
 }

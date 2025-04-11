@@ -134,4 +134,8 @@ main.container-fluid {
         margin-bottom: 20px;
     }
 
+    .home p{
+        text-align: start;
+    }
+
 }
