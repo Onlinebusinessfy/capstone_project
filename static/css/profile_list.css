@@ -18,8 +18,7 @@
 }
 
 .d-flex {
-    display: flex !important
-;
+    display: flex !important;
     justify-content: flex-end;
 }
 
@@ -52,4 +51,34 @@ h1{
 
 .card-body {
     margin-bottom: -60px;
+}
+
+@media screen and (max-width:767px){
+    .search-btn {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-control {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+
+    .filter .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .filter a.btn {
+        margin-left: 0;
+    }
+
+    .filter .btn:last-child {
+        margin-bottom: 0;
+    }
+
+    .bottom-card{
+        min-height: 450px;
+    }
+    
 }

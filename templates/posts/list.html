@@ -34,9 +34,11 @@ Posts
                 </div>
             </div>
             <div style="margin-top: 10px;">
-                <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize}}</strong>
-                <strong class="text-secondary">{{ item.number_of_dislikes }} DisLike{{ item.number_of_dislikes|pluralize}}</strong>
-                <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize}}</strong>
+                <div class="number-of">
+                    <strong class="text-secondary">{{ item.number_of_likes }} Like{{ item.number_of_likes|pluralize}}</strong>
+                    <strong class="text-secondary">{{ item.number_of_dislikes }} DisLike{{ item.number_of_dislikes|pluralize}}</strong>
+                    <strong class="text-secondary">{{ item.number_of_comments }} comment{{ item.number_of_comments|pluralize}}</strong>
+                </div>
                 {% if item.author == request.user or request.user.is_superuser %}
                 <button class="delete-post-btn btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ item.pk }}"> Delete Post</button>
                 <div class="modal fade" id="deleteModal-{{ item.pk }}" tabindex="-1"

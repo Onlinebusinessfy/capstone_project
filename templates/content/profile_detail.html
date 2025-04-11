@@ -19,15 +19,17 @@
         <img class="image-format" src="{% static 'img/default.jpg' %}" alt="">
     </div>
     {% endif %}
-    <h1>{{profile.name}}</h1>
-    <h5><b>Telephone: </b>{{profile.phone_number}}</h5>
-    <h6><b>City: </b>{{profile.city}}</h6>
-    <h6><b>State: </b>{{profile.state}}</h6>
-    <h6><b>User: </b>{{profile.user}}</h6>
-    <h6><b>Description: </b></h6>
-    <p>{{profile.description}}</p>
-    <small><b>Created on:</b>{{profile.created_at}}</small>
-    <br>
+    <div>
+        <h1>{{profile.name}}</h1>
+        <h5><b>Telephone: </b>{{profile.phone_number}}</h5>
+        <h6><b>City: </b>{{profile.city}}</h6>
+        <h6><b>State: </b>{{profile.state}}</h6>
+        <h6><b>User: </b>{{profile.user}}</h6>
+        <h6><b>Description: </b></h6>
+        <p>{{profile.description}}</p>
+        <small><b>Created on:</b>{{profile.created_at}}</small>
+        <br>
+    </div>
 
     {% if user.is_authenticated %}
     {% if profile.user == request.user or request.user.is_superuser %}
